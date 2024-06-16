@@ -1,9 +1,9 @@
 import os
 
 processList = {
-#    'ee2tt_bWbW': {
-#        "fraction": 1, 
-#    },
+    'ee2tt_bWbW': {
+        "fraction": 1, 
+    },
     'ee2tt_cHbW_h2bb': {
         "fraction": 1,
     },
