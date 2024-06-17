@@ -2,6 +2,7 @@ import os
 
 if __name__ == '__main__':
     for lhe_file in os.scandir('MG5_aMCatNLO/'):
+        if not lhe_file.name.endswith(".lhe"): continue
         name = lhe_file.name[:lhe_file.name.rfind("_")]
         number = int(lhe_file.name[lhe_file.name.rfind("_")+1:lhe_file.name.rfind(".lhe")])
         print(f"{f' Running detector simulation for {lhe_file.name} ':+^100}")
