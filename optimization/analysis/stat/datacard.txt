@@ -1,0 +1,18 @@
+imax 1
+jmax 1
+kmax *
+---
+shapes * * input.root $PROCESS $PROCESS_$SYSTEMATIC
+bin bin1
+observation -1
+---
+bin             bin1       bin1
+process         h_sig      h_tt
+process         0          1
+rate            -1         -1
+---
+sys1      lnN    1.20       -
+sys2      lnN    -          1.20
+#lumi     lnN    1.01       1.01
+#alpha  shape    -          1
+bin1 autoMCStats 0 1 1
