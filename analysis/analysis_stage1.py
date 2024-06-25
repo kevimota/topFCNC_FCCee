@@ -1,16 +1,28 @@
 import os
 
 processList = {
-    'ee2tt_bWbW': {
+    'ee2tt_bWbW_W2ln': {
         "fraction": 1, 
+    },
+    'ee2tt_bWbW_W2lnW2qq': {
+        "fraction": 1, 
+    },
+    'ee2tt_bWbW_W2qq': {
+        "fraction": 1,
     },
     'ee2tt_cHbW_h2bb': {
         "fraction": 1,
     },
-    'ee2tt_cSbW_S2bb_M50': {
+    'ee2tt_uHbW_h2bb': {
         "fraction": 1,
     },
-    'ee2tt_uHbW_h2bb': {
+    'ee2tt_cSbW_S2bb_M10': {
+        "fraction": 1,
+    },
+    'ee2tt_uSbW_S2bb_M10': {
+        "fraction": 1,
+    },
+    'ee2tt_cSbW_S2bb_M50': {
         "fraction": 1,
     },
     'ee2tt_uSbW_S2bb_M50': {
@@ -18,13 +30,13 @@ processList = {
     },
 }
 
-outputDir   = "./outputs/stage1/"
+outputDir   = "./outputs/stage1"
 
-inputDir    = "./gen/"
+inputDir    = "./gen"
 
 includePaths = ["functions.h"]
 
-nCPUS = 4
+nCPUS = 6
 
 ## latest particle transformer model, trained on 9M jets in winter2023 samples
 model_name = "fccee_flavtagging_edm4hep_wc_v1"

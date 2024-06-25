@@ -12,12 +12,12 @@ ROOT.gROOT.SetBatch()
 samples = []
 xmlTree = ET.parse("input.xml")
 for s in xmlTree.findall('sample'):
-    info = {"name": "samples/"+s.get('name')+".root", "type": s.get('type'), "events": float(s.get('events')), "xsec": float(s.get('xsec'))}
+    info = {"name": "../outputs/stage1/"+s.get('name')+".root", "type": s.get('type'), "events": float(s.get('events')), "xsec": float(s.get('xsec'))}
     samples.append(info)
 
 for s in samples:
-    
-    outFile = ROOT.TFile.Open("ntuple/"+s['name'].split('/')[1], "RECREATE")
+    print(f"Running sample in file {s['name'][s['name'].rfind('/')+1:]}")
+    outFile = ROOT.TFile.Open("ntuple/"+s['name'][s['name'].rfind('/')+1:], "RECREATE")
     outTree = tree.tree()
     f = ROOT.TFile(s['name'], "READ")
     tr = f.Get("events")

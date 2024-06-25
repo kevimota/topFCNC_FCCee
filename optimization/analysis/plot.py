@@ -19,7 +19,7 @@ pstyle = style.SetPlotStyle()
 
 #f_sig = ROOT.TFile('output/ee2tt_cHbW_h2bb.root', 'READ')
 f_sig = ROOT.TFile('output/ee2tt_cSbW_S2bb_M50.root', 'READ')
-f_tt = ROOT.TFile('output/ee2tt_bWbW.root', 'READ')
+f_tt = ROOT.TFile('output/ee2tt_bWbW_W2ln.root', 'READ')
 
 h_sig = f_sig.Get('mbb_all')
 h_tt = f_tt.Get('mbb_all')
