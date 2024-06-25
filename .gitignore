@@ -1,3 +1,7 @@
 *.root
 *.lhe
 __pycache__
+*.pdf
+*.png
+*.jpg
+*.jpeg
