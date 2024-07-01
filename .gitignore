@@ -5,3 +5,7 @@ __pycache__
 *.png
 *.jpg
 *.jpeg
+
+combine_logger.out
+optimization/analysis/pics/mbb.pdf
+optimization/analysis/stat/nll.pdf
