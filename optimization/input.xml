@@ -1,7 +1,0 @@
-<data>
-    <sample name="ee2tt_bWbW_W2ln" process="TTbar" type="background" events="100000" xsec="0.3"></sample>
-    <sample name="ee2tt_cHbW_h2bb" process="cHbb" type="signal" events="100000" xsec="0.000369"></sample>
-    <sample name="ee2tt_uHbW_h2bb" process="uHbb" type="signal" events="100000" xsec="0.000369"></sample>
-    <sample name="ee2tt_cSbW_S2bb_M50" process="cHbb50" type="signal" events="100000" xsec="0.00138"></sample>
-    <sample name="ee2tt_uSbW_S2bb_M50" process="uHbb50" type="signal" events="100000" xsec="0.00138"></sample>
-</data>

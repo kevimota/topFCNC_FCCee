@@ -3,15 +3,14 @@
 import os, sys, ROOT
 import hist
 import objects as obj
-import xml.etree.ElementTree as ET
+import yaml
 
 ROOT.gROOT.SetBatch()
 
-samples = []
-xmlTree = ET.parse("../input.xml")
-for s in xmlTree.findall('sample'):
-    info = {"name": "../ntuple/"+s.get('name')+".root", "type": s.get('type')}
-    samples.append(info)
+input_folder = "../ntuple"
+
+with open("../input.yml", 'r') as f:
+    samples = yaml.load(f, Loader=yaml.FullLoader)
     
 def cat(nb, nj):
     c = ''
@@ -23,10 +22,10 @@ def cat(nb, nj):
     return c
 
 for s in samples:
-
-    outFile = ROOT.TFile.Open("output/"+s['name'].split('/')[2], "RECREATE")
+    print(f"Running sample in file {input_folder}/{s['name']}.root")
+    outFile = ROOT.TFile.Open(f"output/{s['name']}.root", "RECREATE")
     outHist = hist.hist()
-    f = ROOT.TFile(s['name'], "READ")
+    f = ROOT.TFile(f"{input_folder}/{s['name']}.root", "READ")
     tr = f.Get("ntuple")
     
     for i in range(tr.GetEntries()):
@@ -61,10 +60,11 @@ for s in samples:
 
         c = cat(nbjets, njets)
 
-        ms = 50
+        ms = 10
 #        ms = 125
         mmin = 1E+10
         ij1, ij2 = -1, -1
+        #print("-----------------")
         for ijet1, jet1 in enumerate(bjets):
             for ijet2 in range(ijet1+1, len(bjets)):
                 jet2 = bjets[ijet2]
@@ -73,6 +73,7 @@ for s in samples:
                     mmin = abs(mbb-ms)
                     ij1 = ijet1
                     ij2 = ijet2
+                    #print(mmin)
         mbb = (bjets[ij1].p4+bjets[ij2].p4).M()
         outHist.h['mbb_all'].Fill(mbb, w)
         outHist.h['mbb_'+c].Fill(mbb, w)

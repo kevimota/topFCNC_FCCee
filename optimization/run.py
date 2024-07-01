@@ -3,23 +3,22 @@
 import os, sys, ROOT
 import tree
 import objects as obj
-import xml.etree.ElementTree as ET
+import yaml
 
 lumi = 1500000 # pb
 
 ROOT.gROOT.SetBatch()
 
-samples = []
-xmlTree = ET.parse("input.xml")
-for s in xmlTree.findall('sample'):
-    info = {"name": "../outputs/stage1/"+s.get('name')+".root", "type": s.get('type'), "events": float(s.get('events')), "xsec": float(s.get('xsec'))}
-    samples.append(info)
+input_folder = "../outputs/stage1"
+
+with open("input.yml", 'r') as f:
+    samples = yaml.load(f, Loader=yaml.FullLoader)
 
 for s in samples:
-    print(f"Running sample in file {s['name'][s['name'].rfind('/')+1:]}")
-    outFile = ROOT.TFile.Open("ntuple/"+s['name'][s['name'].rfind('/')+1:], "RECREATE")
+    print(f"Running sample in file {input_folder}/{s['name']}.root")
+    outFile = ROOT.TFile.Open(f"ntuple/{s['name']}.root", "RECREATE")
     outTree = tree.tree()
-    f = ROOT.TFile(s['name'], "READ")
+    f = ROOT.TFile(f"{input_folder}/{s['name']}.root", "READ")
     tr = f.Get("events")
     
     outTree.weight[0] = float(lumi/(s['events']/s['xsec']))
