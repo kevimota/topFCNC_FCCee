@@ -6,6 +6,6 @@ __pycache__
 *.jpg
 *.jpeg
 
-combine_logger.out
-optimization/analysis/pics/mbb.pdf
-optimization/analysis/stat/nll.pdf
+analysis/combine/combine_*
+analysis/bdt_model/*/
+analysis/test*
