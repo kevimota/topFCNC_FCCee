@@ -1,0 +1,24 @@
+booster: gbtree
+tree_method: auto
+sampling_method: uniform
+base_score: 0.5 
+colsample_bylevel: 1
+colsample_bytree: 0.9
+colsample_bynode: 1
+gamma: 0 
+learning_rate: 0.1
+max_delta_step: 0 
+min_child_weight: 1
+objective: binary:logistic
+reg_alpha: 0
+reg_lambda: 1 
+scale_pos_weight: 1.
+seed: 0
+subsample: 1
+eval_metric: 
+  - auc
+  - error
+  - logloss
+n_estimators: 1000 
+eta: 0.1
+max_depth: 4
