@@ -12,7 +12,7 @@
 #include "edm4hep/ParticleIDData.h"
 #include "ReconstructedParticle2MC.h"
 
-namespace FCCAnalyses { namespace TOPFCNCfunctions {
+namespace FCCAnalyses { namespace TopFCNCfunctions {
 
 ROOT::VecOps::RVec<edm4hep::MCParticleData> getMC_fromindices(ROOT::VecOps::RVec<int> index, ROOT::VecOps::RVec<edm4hep::MCParticleData> in){
   ROOT::VecOps::RVec<edm4hep::MCParticleData> result;
