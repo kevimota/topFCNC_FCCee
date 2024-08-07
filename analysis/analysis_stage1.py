@@ -1,33 +1,45 @@
 import os
 
 processList = {
-    'ee2tt_bWbW_W2ln': {
-        "fraction": 1, 
-    },
-    'ee2tt_bWbW_W2lnW2qq': {
-        "fraction": 1, 
-    },
-    'ee2tt_bWbW_W2qq': {
-        "fraction": 1,
-    },
-    'ee2tt_cHbW_h2bb': {
-        "fraction": 1,
-    },
-    'ee2tt_uHbW_h2bb': {
-        "fraction": 1,
-    },
+#    'ee2tt_bWbW_W2ln': {
+#        "fraction": 1, 
+#    },
+#    'ee2tt_bWbW_W2lnW2qq': {
+#        "fraction": 1, 
+#    },
+#    'ee2tt_bWbW_W2qq': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_cHbW_h2bb': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_uHbW_h2bb': {
+#        "fraction": 1,
+#    },
     'ee2tt_cSbW_S2bb_M10': {
         "fraction": 1,
     },
-    'ee2tt_uSbW_S2bb_M10': {
-        "fraction": 1,
-    },
-    'ee2tt_cSbW_S2bb_M50': {
-        "fraction": 1,
-    },
-    'ee2tt_uSbW_S2bb_M50': {
-        "fraction": 1,
-    },
+#    'ee2tt_uSbW_S2bb_M10': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_cSbW_S2bb_M50': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_uSbW_S2bb_M50': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_cSbW_S2bb_M15': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_cSbW_S2bb_M20': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_uSbW_S2bb_M15': {
+#        "fraction": 1,
+#    },
+#    'ee2tt_uSbW_S2bb_M20': {
+#        "fraction": 1,
+#    },
 }
 
 outputDir   = "./outputs/stage1"
@@ -88,7 +100,7 @@ class RDFanalysis:
         df = df.Define("muons_all", "ReconstructedParticle::get(Muon0, ReconstructedParticles)")
         df = df.Define("muons", "ReconstructedParticle::sel_p(5)(muons_all)")
 
-        df = df.Define("muons_iso", "FCCAnalyses::TOPFCNCfunctions::coneIsolation(0.01, 0.5)(muons, ReconstructedParticles)")
+        df = df.Define("muons_iso", "FCCAnalyses::TopFCNCfunctions::coneIsolation(0.01, 0.5)(muons, ReconstructedParticles)")
         df = df.Define("muons_p", "FCCAnalyses::ReconstructedParticle::get_p(muons)")
         df = df.Define("muons_e", "FCCAnalyses::ReconstructedParticle::get_e(muons)")
         df = df.Define("muons_px", "FCCAnalyses::ReconstructedParticle::get_px(muons)")
@@ -104,7 +116,7 @@ class RDFanalysis:
         df = df.Define("electrons_all", "ReconstructedParticle::get(Electron0, ReconstructedParticles)")
         df = df.Define("electrons", "ReconstructedParticle::sel_p(5)(electrons_all)")
 
-        df = df.Define("electrons_iso", "FCCAnalyses::TOPFCNCfunctions::coneIsolation(0.01, 0.5)(electrons, ReconstructedParticles)")
+        df = df.Define("electrons_iso", "FCCAnalyses::TopFCNCfunctions::coneIsolation(0.01, 0.5)(electrons, ReconstructedParticles)")
         df = df.Define("electrons_p", "FCCAnalyses::ReconstructedParticle::get_p(electrons)")
         df = df.Define("electrons_e", "FCCAnalyses::ReconstructedParticle::get_e(electrons)")
         df = df.Define("electrons_px", "FCCAnalyses::ReconstructedParticle::get_px(electrons)")
@@ -120,7 +132,7 @@ class RDFanalysis:
         df = df.Define("photons_all", "ReconstructedParticle::get(Photon0, ReconstructedParticles)")
         df = df.Define("photons", "ReconstructedParticle::sel_p(5)(photons_all)")
 
-        df = df.Define("photons_iso", "FCCAnalyses::TOPFCNCfunctions::coneIsolation(0.01, 0.5)(photons, ReconstructedParticles)")
+        df = df.Define("photons_iso", "FCCAnalyses::TopFCNCfunctions::coneIsolation(0.01, 0.5)(photons, ReconstructedParticles)")
         df = df.Define("photons_p", "FCCAnalyses::ReconstructedParticle::get_p(photons)")
         df = df.Define("photons_e", "FCCAnalyses::ReconstructedParticle::get_e(photons)")
         df = df.Define("photons_px", "FCCAnalyses::ReconstructedParticle::get_px(photons)")
@@ -132,7 +144,7 @@ class RDFanalysis:
         df = df.Define("photons_phi", "FCCAnalyses::ReconstructedParticle::get_phi(photons)")
         df = df.Define("photons_n", "FCCAnalyses::ReconstructedParticle::get_n(photons)")
 
-        df = df.Define("MissingET", "TOPFCNCfunctions::missingEnergy(365, ReconstructedParticles)")
+        df = df.Define("MissingET", "TopFCNCfunctions::missingEnergy(365, ReconstructedParticles)")
 
         df = df.Define("MET_e", "ReconstructedParticle::get_e(MissingET)")
         df = df.Define("MET_p", "ReconstructedParticle::get_p(MissingET)")
@@ -146,12 +158,12 @@ class RDFanalysis:
 
         df = df.Define(
             "muons_sel_iso",
-            "FCCAnalyses::TOPFCNCfunctions::sel_iso(0.25)(muons, muons_iso)",
+            "FCCAnalyses::TopFCNCfunctions::sel_iso(0.25)(muons, muons_iso)",
         )
         
         df = df.Define(
             "electrons_sel_iso",
-            "FCCAnalyses::TOPFCNCfunctions::sel_iso(0.25)(electrons, electrons_iso)",
+            "FCCAnalyses::TopFCNCfunctions::sel_iso(0.25)(electrons, electrons_iso)",
         )
 
         df = df.Define(
@@ -240,7 +252,7 @@ class RDFanalysis:
         df = df.Define("RPnl_q",           "ReconstructedParticle::get_charge(ReconstructedParticlesNoIsoLeptons)")
 
         df = df.Define("pseudo_jets",            "JetClusteringUtils::set_pseudoJets_xyzm(RPnl_px, RPnl_py, RPnl_pz, RPnl_m)")
-        df = df.Define("FCCAnalysesJets_antikt", "JetClustering::clustering_antikt(0.5, 0, 20, 0, 0)(pseudo_jets)")
+        """ df = df.Define("FCCAnalysesJets_antikt", "JetClustering::clustering_antikt(0.5, 0, 20, 0, 0)(pseudo_jets)")
         df = df.Define("jet_antikt",             "JetClusteringUtils::get_pseudoJets(FCCAnalysesJets_antikt)")
         df = df.Define("jetconstituents_antikt", "JetClusteringUtils::get_constituents(FCCAnalysesJets_antikt)")
         df = df.Define("jetc_antikt",            "JetConstituentsUtils::build_constituents_cluster(ReconstructedParticlesNoIsoLeptons,jetconstituents_antikt)")
@@ -254,7 +266,7 @@ class RDFanalysis:
         df = df.Define("jet_antikt_phi",         "JetClusteringUtils::get_phi(jet_antikt)")
         df = df.Define("jet_antikt_eta",         "JetClusteringUtils::get_eta(jet_antikt)")
         df = df.Define("jet_antikt_mass",        "JetClusteringUtils::get_m(jet_antikt)")
-        df = df.Define("jet_antikt_n",           "JetConstituentsUtils::count_jets(jetc_antikt)")
+        df = df.Define("jet_antikt_n",           "JetConstituentsUtils::count_jets(jetc_antikt)") 
 
         jetFlavourHelper = JetFlavourHelper(
             collections,
@@ -270,7 +282,7 @@ class RDFanalysis:
             elif i.startswith("recojet_"): b = i[8:i.find("_antikt")]
             else: continue
             df = df.Alias(f"jet_antikt_{b}", i)
-            output_branches.add(f"jet_antikt_{b}")
+            output_branches.add(f"jet_antikt_{b}") """
 
         df = df.Define("FCCAnalysesJets_genkt", "JetClustering::clustering_genkt(1.5, 0, 1, 0, 0)(pseudo_jets)")
         df = df.Define("jet_genkt",             "JetClusteringUtils::get_pseudoJets(FCCAnalysesJets_genkt)")
@@ -368,18 +380,21 @@ class RDFanalysis:
             #"jet_ee_kt_mass",
             #"jet_ee_kt_nconst",
             "jet_ee_kt_n",
+            "jet_ee_kt_dmerge1",
+            "jet_ee_kt_dmerge2",
+            "jet_ee_kt_dmerge3",
 
-            "jet_antikt_e",    
-            "jet_antikt_px",    
-            "jet_antikt_py",    
-            "jet_antikt_pz",    
-            "jet_antikt_p",    
-            "jet_antikt_pt",    
-            "jet_antikt_phi",    
-            "jet_antikt_eta",    
-            "jet_antikt_mass",
-            "jet_antikt_nconst",
-            "jet_antikt_n",
+            #"jet_antikt_e",    
+            #"jet_antikt_px",    
+            #"jet_antikt_py",    
+            #"jet_antikt_pz",    
+            #"jet_antikt_p",    
+            #"jet_antikt_pt",    
+            #"jet_antikt_phi",    
+            #"jet_antikt_eta",    
+            #"jet_antikt_mass",
+            #"jet_antikt_nconst",
+            #"jet_antikt_n",
 
             "jet_genkt_e",    
             "jet_genkt_px",    
