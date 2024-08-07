@@ -1,1 +1,3 @@
-source /cvmfs/sw.hsf.org/key4hep/setup.sh
+conda activate test
+
+export PYTHONPATH=$PWD:$PYTHONPATH
